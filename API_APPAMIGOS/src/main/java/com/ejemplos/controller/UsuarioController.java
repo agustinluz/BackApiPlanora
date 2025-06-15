@@ -1,6 +1,7 @@
 package com.ejemplos.controller;
 
 import com.ejemplos.DTO.Usuario.UsuarioDTO;
+
 import com.ejemplos.DTO.Usuario.UsuarioUpdateDTO;
 import com.ejemplos.modelo.Usuario;
 import com.ejemplos.service.UsuarioService;
@@ -89,6 +90,15 @@ public class UsuarioController {
                         .body(new ErrorResponse("El email ya está en uso por otro usuario"));
                 }
                 usuario.setEmail(updateDTO.getEmail());
+            }
+             // Actualizar nombre si se envía
+            if (updateDTO.getNombre() != null) {
+                usuario.setNombre(updateDTO.getNombre().trim());
+            }
+
+            // Actualizar foto de perfil si se envía
+            if (updateDTO.getFotoPerfil() != null) {
+                usuario.setFotoPerfil(updateDTO.getFotoPerfil());
             }
 
          // Actualizar contraseña si se proporciona
