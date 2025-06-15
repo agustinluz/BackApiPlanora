@@ -312,7 +312,7 @@ public class VotacionController {
             }
 
             // Verificar que el usuario es el creador
-            if (!votacion.getCreador().equals(usuario.getId())) {
+            if (!votacion.getCreador().getId().equals(usuario.getId())) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN)
                     .body(Map.of("error", "Solo el creador puede cerrar la votación"));
             }
